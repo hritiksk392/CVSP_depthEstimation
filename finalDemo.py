@@ -92,10 +92,12 @@ def depth_Estimation(args):
 	 #Scaling for given resolution
 	disp_resized = torch.nn.functional.interpolate(disp,
 	(original_height, original_width), mode="bilinear", align_corners=False) # interpolate the values in to fit the given resolution of the image
-
 	disp_resized_np = disp_resized.squeeze().cpu().numpy() # Converting tensor in pytorch to numpy array
+	
 	print("resized disp" + str(disp_resized_np.shape))
-	scaled,dep = disp_to_depth(disp_resized_np,0.1,1000) # resizing the depth from 0.1 to 100 units
+	print("Range of Depth in image")
+	scaled,dep = disp_to_depth(disp_resized_np,0.1,1000) # resizing the depth from 0.1 to 1000 units
+	print("min->"+str(dep.min())+"mx->"+str(dep.max()))
 
 	#Preview of the rgb and Depth images
 	rgb = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
