@@ -1,3 +1,7 @@
+# Author:- Hritik Singh Kushwah
+# Mainly adapted from test_simple.py and inverse_project.py repositories 
+#Final depth estimation and 3-D simulation
+
 import cv2
 import os
 import sys
